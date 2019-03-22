@@ -7,7 +7,7 @@
 
     this.NoteList.getNotes().forEach(function(note) {
       // notesHtmlString = `${notesHtmlString}<li><div>${note.showText()}</div></li>`
-      notesHtmlString = notesHtmlString + "<li><div>" + note.showText() + "</div></li>"
+      notesHtmlString = notesHtmlString + "<li><div>" + note.showText().substring(0,21) + "..." + "</div></li>"
     })
 
     // return `${notesHtmlString}</ul>`
