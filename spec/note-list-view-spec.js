@@ -27,7 +27,34 @@ function testReturnsHtmlWithOneNote() {
   }
 
   var noteListView = new NoteListView(NoteListDouble);
-  assert.isTrue(noteListView.getNoteString() === "<ul><li><div>abc</div></li></ul>")
+  assert.isTrue(noteListView.getNoteString() === "<ul><li><div id=0>abc</div></li></ul>")
 }
+testReturnsHtmlWithOneNote();
 
-testReturnsHtmlWithOneNote()
+function testDivIDIncrements() {
+
+  // NoteListView.getNotes()
+  var NoteDouble1 = {
+    showText: function() {
+      return "note first"
+    }
+  }
+  var NoteDouble2 = {
+    showText: function() {
+      return "note second"
+    }
+  }
+
+  var NoteListDouble = {
+    getNotes: function(){
+      return [NoteDouble1, NoteDouble2];
+    }
+  }
+
+  var noteListView = new NoteListView(NoteListDouble);
+  var viewString = noteListView.getNoteString();
+  console.log(viewString)
+  assert.isTrue(viewString === "<ul><li><div id=0>note first</div></li><li><div id=1>note second</div></li></ul>")
+  }
+
+testDivIDIncrements();
